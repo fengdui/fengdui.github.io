@@ -1,0 +1,38 @@
+#
+# Before using this .gitlab-ci.yml:
+#
+# - This example uses the latest Docker image from https://docker.hugomods.com/docs/tags/#exts,
+#   but you might want to use an exact version to avoid any broken pipelines.
+#   All available Hugo versions are listed under https://hub.docker.com/r/hugomods/hugo/tags.
+# - Read about the difference between the various images
+#   https://docker.hugomods.com/docs/tags/.
+#   If you don't know what to use, better use the extended version.
+# - To change the theme, see
+#   https://gitlab.com/pages/hugo/-/blob/main/README.md#use-a-custom-theme.
+#
+image: hugomods/hugo:exts
+
+variables:
+  HUGO_ENV: production
+  THEME_URL: "github.com/adityatelange/hugo-PaperMod"
+
+default:
+  before_script:
+    - hugo version
+    - hugo mod get -u $THEME_URL
+
+# Use everywhere except on the default branch
+test:
+  script:
+    - hugo --minify
+  rules:
+    - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
+
+# Run only on the default branch
+create-pages:
+  stage: deploy
+  script:
+    - hugo --minify
+  pages: true
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
