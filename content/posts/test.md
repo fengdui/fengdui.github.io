@@ -7,8 +7,8 @@ summary: "Sample article showcasing basic code syntax and formatting for HTML el
 tags: ["markdown", "syntax", "code", "gist"]
 categories: ["themes", "syntax"]
 series: ["Themes Guide"]
-ShowToc: true
-TocOpen: true
+ShowToc: false
+TocOpen: false
 ---
 
 ### Inline Code

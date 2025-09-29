@@ -80,16 +80,16 @@ name = "Tags"
 url = "tags"
 
 [params.homeInfoParams]
-Title = ""
+Title = "随手记录一些东西"
 Content = """
-👋 随手记录一些东西
+👋 Welcome to Hugo's theme PaperMod!
 
 
 """
 
 [params.assets]
 disableHLJS = true
-favicon = "static/favicon.ico"
+favicon = "favicon.ico"
 
 [markup.goldmark.renderer]
 unsafe = true
