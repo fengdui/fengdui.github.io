@@ -63,7 +63,7 @@ ShowCodeCopyButtons = true
 ShowRssButtonInSectionTermList = true
 ShowAllPagesInArchive = true
 ShowPageNums = true
-ShowToc = true
+ShowToc = false
 images = ["images/papermod-cover.png"]
 
 [params.profileMode]
@@ -79,8 +79,17 @@ url = "archives"
 name = "Tags"
 url = "tags"
 
+[params.homeInfoParams]
+Title = ""
+Content = """
+👋 随手记录一些东西
+
+-
+"""
+
 [params.assets]
 disableHLJS = true
+favicon = "/favicon.ico"
 
 [markup.goldmark.renderer]
 unsafe = true
