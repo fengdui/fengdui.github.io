@@ -45,75 +45,6 @@ weight = 10
 name = "Tags"
 url = "tags/"
 weight = 10
-[[languages.en.menu.main]]
-name = "WiKi"
-url = "https://github.com/adityatelange/hugo-PaperMod/wiki/"
-
-[languages.fr]
-languageName = ":fr:"
-weight = 2
-title = "PaperModL2"
-
-[languages.fr.taxonomies]
-category = "FRcategories"
-tag = "FRtags"
-series = "FRseries"
-
-[[languages.fr.menu.main]]
-name = "Archive"
-url = "archives/"
-weight = 5
-[[languages.fr.menu.main]]
-name = "FRTags"
-url = "frtags"
-weight = 10
-[[languages.fr.menu.main]]
-name = "FRCategories"
-url = "frcategories"
-weight = 10
-[[languages.fr.menu.main]]
-name = "FRSeries"
-url = "frseries"
-weight = 10
-[[languages.fr.menu.main]]
-name = "NullLink"
-url = "#"
-
-[languages.fr.params]
-languageAltTitle = "French"
-
-[languages.fr.params.profileMode]
-enabled = true
-title = "PaperMod"
-imageUrl = "https://raw.githubusercontent.com/googlefonts/noto-emoji/master/svg/emoji_u1f9d1_1f3fb_200d_1f4bb.svg"
-imageTitle = "ProfileMode image"
-subtitle = "☄️ Fast | ☁️ Fluent | 🌙 Smooth | 📱 Responsive"
-
-[[languages.fr.params.profileMode.buttons]]
-name = "Blog"
-url = "posts"
-[[languages.fr.params.profileMode.buttons]]
-name = "Profile Mode"
-url = "https://github.com/adityatelange/hugo-PaperMod/wiki/Features#profile-mode"
-
-[languages.fa]
-languagedirection = "rtl"
-weight = 3
-title = "PaperMod RTL"
-
-[languages.fa.taxonomies]
-category = "FAcategories"
-tag = "FAtags"
-series = "FAseries"
-
-[[languages.fa.menu.main]]
-name = "FATags"
-url = "fatags"
-weight = 10
-
-[languages.fa.params.homeInfoParams]
-Title = "Hi there 👋"
-Content = "Welcome to RTL layout"
 
 [outputs]
 home = ["HTML", "RSS", "JSON"]
@@ -160,22 +91,6 @@ Content = """
 - PaperMod is based on theme [Paper](https://github.com/nanxiaobei/hugo-paper/tree/4330c8b12aa48bfdecbcad6ad66145f679a430b3).
 """
 
-[[params.socialIcons]]
-name = "github"
-title = "View Source on Github"
-url = "https://github.com/adityatelange/hugo-PaperMod"
-[[params.socialIcons]]
-name = "Discord"
-title = "Join discord community"
-url = "https://discord.gg/ahpmTvhVmp"
-[[params.socialIcons]]
-name = "X"
-title = "Share PaperMod on X/Twitter"
-url = "https://x.com/intent/tweet/?text=Checkout%20Hugo%20PaperMod%20%E2%9C%A8%0AA%20fast,%20clean,%20responsive%20Hugo%20theme.&url=https://github.com/adityatelange/hugo-PaperMod&hashtags=Hugo,PaperMod"
-[[params.socialIcons]]
-name = "KoFi"
-title = "Buy me a Ko-Fi :)"
-url = "https://ko-fi.com/adityatelange"
 
 [params.editPost]
 URL = "https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite/content"
