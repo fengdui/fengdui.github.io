@@ -1,7 +1,7 @@
 ---
 author: ["wzz"]
-title: "Code Syntax Guide"
-date: "2029-03-10"
+title: "舟山梭子蟹"
+date: "2025-09-29"
 description: "Sample article showcasing basic code syntax and formatting for HTML elements."
 summary: "Sample article showcasing basic code syntax and formatting for HTML elements."
 tags: ["markdown", "syntax", "code", "gist"]
