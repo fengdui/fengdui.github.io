@@ -84,12 +84,12 @@ Title = ""
 Content = """
 👋 随手记录一些东西
 
--
+
 """
 
 [params.assets]
 disableHLJS = true
-favicon = "/favicon.ico"
+favicon = "static/favicon.ico"
 
 [markup.goldmark.renderer]
 unsafe = true
