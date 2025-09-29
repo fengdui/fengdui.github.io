@@ -4,7 +4,7 @@
 # If you use go mod to install your theme, you must use the URL of the theme.
 # If your theme is in the themes directory, you just need to specify its name.
 #
-baseURL = "https://pages.gitlab.io/hugo/"
+baseURL = "https://fengdui.gitlab.io/"
 title = "Hugo and GitLab Pages"
 copyright = "© [PaperMod Contributors](https://github.com/adityatelange/hugo-PaperMod/graphs/contributors)"
 theme = ["github.com/adityatelange/hugo-PaperMod"]
