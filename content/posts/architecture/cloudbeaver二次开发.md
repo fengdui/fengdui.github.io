@@ -153,15 +153,15 @@ You should configure jars in driver settings.
 
 Content root 这个是工作目录设置的路径 启动命令的参数 -web-config也是基于这个路径 要设置为C:\Users\Administrator\IdeaProjects\cloudbeaver\deploy\cloudbeaver
 
-![img.png](pic/img.png)
+![img.png](../../../static/pic/img.png)
 
 日志位置 org.jkiss.dbeaver.launcher.DBeaverLauncher#computeLogFileLocation
 
-![img_1.png](pic/img_1.png)
+![img_1.png](../../../static/pic/img_1.png)
 
 这里面是日志位置
 
-![img_2.png](pic/img_2.png)
+![img_2.png](../../../static/pic/img_2.png)
 
 C:\Users\Administrator\eclipse-workspace2.metadata.plugins\org.eclipse.pde.core\CloudbeaverServer.product
 这里面是config.ini和dev.properties文件位置
