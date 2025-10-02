@@ -10,7 +10,7 @@ copyright = "© [PaperMod Contributors](https://github.com/adityatelange/hugo-Pa
 theme = ["github.com/adityatelange/hugo-PaperMod"]
 
 [pagination]
-pagerSize = 5
+pagerSize = 10
 
 enableInlineShortcodes = true
 enableRobotsTXT = true
