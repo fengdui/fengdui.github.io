@@ -9,7 +9,7 @@ TocOpen: false
 
 
 # eclipse环境
-
+```
 C:\Users\Administrator\Downloads\eclipse-jee-2024-09-R-win32-x86_64\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.4.v20240802-1551\jre\bin\javaw.exe  
 -XX:+ShowCodeDetailsInExceptionMessages  
 -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:62271  
@@ -55,10 +55,13 @@ C:\Users\Administrator\Downloads\eclipse-jee-2024-09-R-win32-x86_64\eclipse\plug
 -consoleLog  
 -web-config "conf\cloudbeaver.conf"  
 -registryMultiLanguage  
+```
 
+```
 [ERROR] [ERROR] Some problems were encountered while processing the POMs:  
 [FATAL] Non-resolvable parent POM for org.jkiss.dbeaver:dbeaver:1.0.0-SNAPSHOT: The following artifacts could not be resolved: com.dbeaver.common:com.dbeaver.common.main:pom:2.2.0-SNAPSHOT (absent): Could not transfer artifact com.dbeaver.common:com.dbeaver.common.main:pom:2.2.0-SNAPSHOT from/to local-contrib (\${local-p2-repo.url}): Cannot access \${local-p2-repo.url} with type p2 using the available connector factories: BasicRepositoryConnectorFactory and 'parent.relativePath' points at wrong local POM @ line 7, column 13  
 [FATAL] Non-resolvable parent POM for org.jkiss.dbeaver:dbeaver:1.0.0-SNAPSHOT: The following artifacts could not be resolved: com.dbeaver.common:com.dbeaver.common.main:pom:2.2.0-SNAPSHOT (absent): com.dbeaver.common:com.dbeaver.common.main:pom:2.2.0-SNAPSHOT failed to transfer from \${local-p2-repo.url} during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of local-contrib has elapsed or updates are forced. Original error: Could not transfer artifact com.dbeaver.common:com.dbeaver.common.main:pom:2.2.0-SNAPSHOT from/to local-contrib (\${local-p2-repo.url}): Cannot access ${local-p2-repo.url} with type p2 using the available connector factories: BasicRepositoryConnectorFactory and 'parent.relativePath' points at wrong local POM @ org.jkiss.dbeaver:dbeaver:1.0.0-SNAPSHOT, C:\Users\Administrator\IdeaProjects\dbeaver\pom.xml, line 7, column 13  
+```
 
 3个工程分支要切一样
 
@@ -72,6 +75,8 @@ build 数组越界 升级maven3.9.9
 miss bundle 解决
 
 导入eclipse 启动缺少模块
+
+```
 !MESSAGE Could not resolve module: org.jkiss.dbeaver.ext.hana.ui [222]
  Unresolved requirement: Require-Bundle: org.jkiss.dbeaver.ext.hana
   -> Bundle-SymbolicName: org.jkiss.dbeaver.ext.hana; bundle-version="1.2.120.qualifier"; singleton:="true"
@@ -80,9 +85,10 @@ miss bundle 解决
      -> Bundle-SymbolicName: org.jkiss.dbeaver.model; bundle-version="2.0.2.qualifier"; singleton:="true"
       org.jkiss.dbeaver.model [257]
        Unresolved requirement: Require-Bundle: org.apache.commons.jexl; visibility:="reexport"
-
+```
 看了下是p2插件引入的 手动配置了下target-platfrom
 
+```
 Caused by: java.lang.ClassNotFoundException: io.cloudbeaver.server.CBApplicationCE cannot be found by io.cloudbeaver.product.ce_24.2.4.qualifier  
 at org.eclipse.osgi.internal.loader.BundleLoader.generateException(BundleLoader.java:562)  
 at org.eclipse.osgi.internal.loader.BundleLoader.findClass0(BundleLoader.java:557)  
@@ -92,7 +98,9 @@ at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
 at org.eclipse.osgi.internal.framework.EquinoxBundle.loadClass(EquinoxBundle.java:643)  
 at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:223)  
 看到生成的config.ini不对 osgi.bundles=reference:file:C:/Users/Administrator/Downloads/eclipse-jee-2024-03-R-win32-x86_64/eclipse/plugins/org.eclipse.equinox.simpleconfigurator_1.5.200.v20240209-1053.jar@1:start  
+```
 
+```
 09:36:29.310 [main] DEBUG io.cloudbeaver.model.app.BaseWebApplication -- Loading configuration from C:\Users\Administrator\IdeaProjects\cloudbeaver\deploy\cloudbeaver\conf\cloudbeaver.conf  
 09:36:29.312 [main] DEBUG io.cloudbeaver.server.CBServerConfigurationController -- Using configuration [C:\Users\Administrator\IdeaProjects\cloudbeaver\deploy\cloudbeaver\conf\cloudbeaver.conf]  
 09:36:29.312 [main] DEBUG io.cloudbeaver.server.CBServerConfigurationController -- Read configuration [C:\Users\Administrator\IdeaProjects\cloudbeaver\deploy\cloudbeaver\conf\cloudbeaver.conf]  
@@ -143,25 +151,27 @@ at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutable
 org.jkiss.dbeaver.DBException: Error creating driver 'H2 Embedded V.2' instance.  
 Most likely required jar files are missing.  
 You should configure jars in driver settings.  
+```
 
-
+```
 16:25:03.623 [main] DEBUG io.cloudbeaver.server.CBApplication --     Global workspace: 'file:/C:/Users/Administrator/runtime-CloudbeaverServer.product/'
 16:25:03.627 [main] DEBUG io.cloudbeaver.server.CBApplication --     Memory available 74Mb/4028Mb
 16:25:03.627 [main] DEBUG io.cloudbeaver.server.CBApplication --     Content root: C:\Users\Administrator\Downloads\eclipse-jee-2024-09-R-win32-x86_64\eclipse\web
 16:25:03.627 [main] DEBUG io.cloudbeaver.server.CBApplication --     Drivers storage: C:\Users\Administrator\IdeaProjects\cloudbeaver\deploy\cloudbeaver\drivers
 16:25:03.630 [main] DEBUG io.cloudbeaver.server.CBApplication --     Listen port: 8978 on all interfaces
+```
 
 Content root 这个是工作目录设置的路径 启动命令的参数 -web-config也是基于这个路径 要设置为C:\Users\Administrator\IdeaProjects\cloudbeaver\deploy\cloudbeaver
 
-![img.png](../../../static/pic/img.png)
+![img.png](/pic/img.png)
 
 日志位置 org.jkiss.dbeaver.launcher.DBeaverLauncher#computeLogFileLocation
 
-![img_1.png](../../../static/pic/img_1.png)
+![img_1.png](/pic/img_1.png)
 
 这里面是日志位置
 
-![img_2.png](../../../static/pic/img_2.png)
+![img_2.png](/pic/img_2.png)
 
 C:\Users\Administrator\eclipse-workspace2.metadata.plugins\org.eclipse.pde.core\CloudbeaverServer.product
 这里面是config.ini和dev.properties文件位置
@@ -189,10 +199,10 @@ conf/cloudbeaver.conf
 -vmargs  
 -Xmx4096M  
 
-启动找不到jkiss utils common模块是下划线找不到无法编译
-启动找不到CEApplicationCE类 需要先build dev配置文件是再target目录下面找class
-cd cloudbeaver sh generate_workspace.sh 这个是会生成dbeaver-workspace 里面是一些eclipse的第三方依赖 这个工具解析了maven依赖去下载依赖 C:\Users\Administrator\IdeaProjects\cloudbeaver-all\dbeaver-workspace\products\CloudbeaverServer.product里也有一些config.ini和dev.properties配置 日志也在这里
-idea打开dbeaver-workspace/cloudbeaver-ce 会自动生成启动配置
+启动找不到jkiss utils common模块是下划线找不到无法编译  
+启动找不到CEApplicationCE类 需要先build dev配置文件是再target目录下面找class  
+cd cloudbeaver sh generate_workspace.sh 这个是会生成dbeaver-workspace 里面是一些eclipse的第三方依赖 这个工具解析了maven依赖去下载依赖 C:\Users\Administrator\IdeaProjects\cloudbeaver-all\dbeaver-workspace\products\CloudbeaverServer.product里也有一些config.ini和dev.properties配置 日志也在这里  
+idea打开dbeaver-workspace/cloudbeaver-ce 会自动生成启动配置  
 
 
 # cloudbeaver
