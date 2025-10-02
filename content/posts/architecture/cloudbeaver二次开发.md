@@ -1,6 +1,6 @@
 ---
 title: "cloudbeaver二次开发"
-date: "2024-11-14"
+date: "2024-12-23"
 tags: ["架构"]
 ShowToc: false
 TocOpen: false
