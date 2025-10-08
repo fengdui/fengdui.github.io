@@ -1,0 +1,102 @@
+#
+# Theme setup
+#
+# If you use go mod to install your theme, you must use the URL of the theme.
+# If your theme is in the themes directory, you just need to specify its name.
+#
+baseURL = "https://fengdui.gitlab.io/"
+title = "Hugo and GitLab Pages"
+copyright = "© [PaperMod Contributors](https://github.com/adityatelange/hugo-PaperMod/graphs/contributors)"
+theme = ["github.com/adityatelange/hugo-PaperMod"]
+
+[pagination]
+pagerSize = 10
+
+enableInlineShortcodes = true
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+enableEmoji = true
+pygmentsUseClasses = true
+mainsections = ["posts", "papermod"]
+
+[minify]
+disableXML = true
+
+[languages.en]
+languageName = "English"
+weight = 1
+
+[languages.en.taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
+
+[[languages.en.menu.main]]
+name = "Archive"
+url = "archives"
+weight = 5
+[[languages.en.menu.main]]
+name = "Search"
+url = "search/"
+weight = 10
+[[languages.en.menu.main]]
+name = "Tags"
+url = "tags/"
+weight = 10
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+
+[params]
+env = "production"
+description = "Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod"
+author = "Theme PaperMod"
+defaultTheme = "auto"
+ShowShareButtons = false
+ShowReadingTime = true
+displayFullLangName = true
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowCodeCopyButtons = true
+ShowRssButtonInSectionTermList = true
+ShowAllPagesInArchive = true
+ShowPageNums = true
+ShowToc = false
+images = ["images/papermod-cover.png"]
+
+[params.profileMode]
+enabled = false
+title = "PaperMod"
+imageUrl = "#"
+imageTitle = "my image"
+
+[[params.profileMode.buttons]]
+name = "Archives"
+url = "archives"
+[[params.profileMode.buttons]]
+name = "Tags"
+url = "tags"
+
+[params.homeInfoParams]
+Title = "随手记录一些东西"
+Content = """
+👋 Welcome to Hugo's theme PaperMod!
+
+
+"""
+
+[params.assets]
+disableHLJS = true
+favicon = "favicon.ico"
+
+[markup.goldmark.renderer]
+unsafe = true
+[markup.highlight]
+noClasses = false
+
+[services.instagram]
+disableInlineCSS = true
+[services.twitter]
+disableInlineCSS = true
