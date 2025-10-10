@@ -1,6 +1,6 @@
 ---
 title: "flyway使用java脚本的方式更新大批量数据"
-date: "2024-09-24"
+date: "2024-10-30"
 tags: ["架构"]
 ShowToc: false
 TocOpen: false
