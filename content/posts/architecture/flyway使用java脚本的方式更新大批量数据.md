@@ -46,7 +46,7 @@ TocOpen: false
 
 试一下果然行，这里面只是打了个日志，具体怎么分批可以context.getConnection()拿到连接后业务上自行处理。
 
-![image_10.png](image_10.png)
+![img_10.png](/pic/img_10.png)
 
 刚开始没有实现checkSum方法, flyway\_schema\_history表里的checkSum是null, 后面阅读源码发现，checkSum是直接读的 org.flywaydb.core.api.migration.JavaMigration#getChecksum方法, 那我直接实现这个方法就行。
 

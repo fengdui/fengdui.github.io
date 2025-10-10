@@ -67,16 +67,16 @@ cqrs CQRS中查询服务不会调用应用服务，也不会调用领域模型�
 MQ、Event、Cache的实现都应该在基础设施层  
 防腐层Adapter应该放在基础设施层, 可以在Adapter中再创建一个Translator实现上下文模型之间的翻译功能  
 # 分层架构
-![img_11.png](img_11.png)
+![img_11.png](/pic/img_11.png)
 # 六边形架构
 
-![img_12.png](img_12.png)
+![img_12.png](/pic/img_12.png)
 
 # cqrs
 
-![img_13.png](img_13.png)
+![img_13.png](/pic/img_13.png)
 
-![img_14.png](img_14.png)
+![img_14.png](/pic/img_14.png)
 
 
 
