@@ -1,6 +1,6 @@
 ---
 title: "informix所有字段类型梳理"
-date: "2024-08-07"
+date: "2024-08-15"
 tags: ["架构"]
 ShowToc: false
 TocOpen: false
