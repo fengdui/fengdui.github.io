@@ -31,7 +31,9 @@ spring aop原理
 - ObjenesisCglibAopProxy），AopProxyFactory 默认的实现类是DefaultAopProxyFactory，得到aopProxy之后在使用aopProxy创建代理。
 - 熟悉动态代理的都知道，代理类会调用invoke方法，invoke方法主要做了以下2个工作。
 - 2.1.获得拦截器链
+```
 - List<Object> chain = this.advised.getInterceptorsAndDynamicInterceptionAdvice(method, targetClass);
+```
 - advised是之前创建的proxyfactory，它又委托了AdvisorChainFactory，AdvisorChainFactory只有一个默认的实现
 - 类，DefaultAdvisorChainFactory，它将advice封装成MethodInterceptor，之后又封装成InterceptorAndDynamicMethodMatcher。
 - 2.2 使用ReflectiveMethodInvocation封装拦截器链，然后调用。
