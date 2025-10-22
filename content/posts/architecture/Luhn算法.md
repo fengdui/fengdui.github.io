@@ -1,5 +1,5 @@
 ---
-title: "liquibase管理数据库版本"
+title: "Luhn算法"
 date: "2025-10-22"
 tags: ["架构"]
 ShowToc: false
