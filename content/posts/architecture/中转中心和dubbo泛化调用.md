@@ -1,6 +1,6 @@
 ---
 title: "中转中心和dubbo泛化调用"
-date: "2017-07-05"
+date: "2018-07-05"
 tags: ["架构"]
 ShowToc: false
 TocOpen: false
