@@ -7,7 +7,7 @@ TocOpen: false
 ---
 
 
-![img_17.png](/pic/img_17.png)
+![img_19.png](/pic/img_19.png)
 
 serial number自测即可 其他都定死 最后一位用下面的算法计算 得到应该序列号
 
