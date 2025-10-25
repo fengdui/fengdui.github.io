@@ -1,7 +1,7 @@
 ---
 title: "iptables和ebtables"
 date: "2025-01-14"
-tags: ["架构", "Linux", "网络", "防火墙"]
+tags: ["架构"]
 ShowToc: true
 TocOpen: true
 ---
