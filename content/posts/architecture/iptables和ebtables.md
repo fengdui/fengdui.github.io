@@ -2,8 +2,8 @@
 title: "iptables和ebtables"
 date: "2025-01-14"
 tags: ["架构"]
-ShowToc: true
-TocOpen: true
+ShowToc: false
+TocOpen: false
 ---
 
 # iptables
