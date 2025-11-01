@@ -11,6 +11,13 @@ TocOpen: false
 # 旁路模式
 设置网卡为混杂模式接收所有经过网卡的数据包，包括不是发给本机的包，即不验证MAC地址
 
+网桥结合tproxy实现透明代理  
+将网桥绑定网卡  
+ebtables过滤数据包并重定向到iptables  
+iptables结合tproxy重定向流量到代理服务  
+iptables -t mangle -A PREROUTING -p tcp --dport 80 -j MARK --set-mark 1  
+iptables -t mangle -A PREROUTING -p tcp --dport 80 -j TPROXY --tproxy-mark 1 --on-port 3128  
+
 
 # 利用TPROXY在网桥上实现透明代理(Fully Transparent Proxy)功能 (CentOS 7)
 
