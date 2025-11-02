@@ -1,6 +1,6 @@
 ---
 title: "pcre2"
-date: "2025-06-29"
+date: "2025-05-29"
 tags: ["架构"]
 ShowToc: false
 TocOpen: false
