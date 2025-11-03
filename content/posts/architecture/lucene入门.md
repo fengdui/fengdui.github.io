@@ -1,6 +1,6 @@
 ---
 title: "lucene入门"
-date: "2025-11-09"
+date: "2017-11-09"
 tags: ["架构"]
 ShowToc: false
 TocOpen: false
