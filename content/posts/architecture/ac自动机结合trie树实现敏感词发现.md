@@ -1,7 +1,7 @@
 ---
 title: "ac自动机结合trie树实现敏感词发现"
 date: "2025-03-31"
-tags: ["架构"]
+tags: ["人工智能"]
 ShowToc: false
 TocOpen: false
 ---
