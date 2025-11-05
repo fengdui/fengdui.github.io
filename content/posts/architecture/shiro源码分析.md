@@ -31,3 +31,54 @@ TocOpen: false
 查询角色/权限：Authorizer 会调用你配置的 Realm（特别是 AuthorizingRealm 子类）的相应方法，例如 doGetAuthorizationInfo(principal) 或特定的权限检查方法。在这个方法中，会执行到你自定义的授权逻辑，你根据用户身份（从 principal 中获取，通常是用户名或用户ID）去查询该用户所拥有的角色和权限信息，并返回。
 
 判断授权结果：Authorizer 根据 Realm 返回的信息，判断用户是否拥有所需的角色或权限。
+
+# 一个demo
+
+
+用户登录 → 生成访问令牌（32位MD5字符串）  
+前端存储访问令牌  
+后续请求携带: Authorization: Bearer <访问令牌>  
+后端继承AuthenticatingFilter 实现一个过滤器 例如Oauth2Filter  
+过滤器prehandler 会执行return isAccessAllowed(request, response, mappedValue) || onAccessDenied(request, response, mappedValue);  
+在上面两个方法里面调用executeLogin基类接口 这个接口会去请求 createToken方法，需要实现createToken方法去获取header里面的token  
+executeLogin还会做登录  
+```
+try {
+    Subject subject = this.getSubject(request, response);
+    subject.login(token);
+    return this.onLoginSuccess(token, subject, request, response);
+} catch (AuthenticationException e) {
+    return this.onLoginFailure(token, e, request, response);
+}
+```
+subject.login会委托SecurityManager 调用 Realm 认证  
+所以需要实现一个 比如Oauth2Realm doGetAuthenticationInfo 方法校验token的有效性 token和它的失效时间存在数据库里面  
+如果token有效拿到用户信息 返回AuthenticationInfo  
+AuthenticationInfo你设置什么principal subject拿到的就是这个你自定义的对象 可以强转  
+UserDetail user = (UserDetail) subject.getPrincipal();  
+
+Oauth2Realm实现doGetAuthorizationInfo 方法从数据库里面查用户的权限  
+流程:  
+用户代码: subject.hasPermission("sys:user:list")  
+↓
+DelegatingSubject.hasPermission()  
+↓
+DefaultSecurityManager.isPermitted()  
+↓
+ModularRealmAuthorizer.isPermitted()  
+↓
+AuthorizingRealm.isPermitted()  
+↓
+AuthorizingRealm.getAuthorizationInfo()  
+↓
+检查缓存 -> 缓存命中则返回  
+↓
+缓存未命中 -> doGetAuthorizationInfo() // 你的实现  
+↓
+结果放入缓存  
+↓
+AuthorizingRealm.isPermitted(permission, info)  
+↓
+返回权限检查结果  
+
+Shiro是提供了自己的Session管理机制 如果要实现分布式session需要自己实现sessionDao  
