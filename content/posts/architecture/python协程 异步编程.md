@@ -55,16 +55,21 @@ await self._serve(sockets) 就是等待完成才会走下去
 不能在运行的事件循环中调用 asyncio.run()  
 
 run_in_executor 使用线程池调用一个同步方法  和直接开启线程池在等待结果相比 等待的方式前者是可以做别的 后者是同步等待
+首次调用 loop.run_in_executor(None, ...) 时，asyncio 才会自动创建一个默认的 ThreadPoolExecutor 并赋值给 _default_executor（默认最大工作线程数为 os.cpu_count() * 5）  
 
 run_in_threadpool 本质上是对  
 asyncio.get_running_loop().run_in_executor() 的封装。  
+
 async def + await   
-await后面跟着定义成async def 的方法 不允许又同步操作 都得改成await使用异步方法  
+await后面跟着定义成async def 的方法 都得改成await使用异步方法 或者使用run_in_executor线程池调用一个同步方法
 异步接口的 TPS 不取决于 “单线程每秒能跑多少个完整请求”，而取决于 “每个请求的实际 CPU 占用时间” 和 “IO 等待时间的占比”：  
 假设每个接口总耗时 0.1s，其中 IO 等待时间 0.09s（不占用 CPU），CPU 计算时间 0.01s（占用主线程）。  
 主线程 1 秒内可处理的 “CPU 计算时间” 是 1s，因此理论 TPS = 1s / 0.01s = 100（忽略事件循环调度开销）。  
 如果 IO 等待时间更长（如 0.095s，CPU 时间 0.005s），理论 TPS 可达到 200。  
 这就是异步框架处理 IO 密集型场景（如 API 调用、数据库查询、文件读写）的核心优势 —— 用单线程 “并行利用” 所有请求的 IO 等待时间。  
 如果你的接口是 CPU 密集型（如 0.1s 全是 CPU 计算，无任何 await 等待），此时异步模型确实会退化为 “单线程串行” 得改成用def 这时候整个方法都会扔到线程池里面去  
-如果def方法里面又同步方法 无所谓 反正def方法已经是同步的了 但是你想def 接口中调用 run_in_threadpool 方法去做一个异步是做不到的 因为加不上await 他会阻塞当前子线程（等待 IO 完成），只是将阻塞操作从 “当前线程” 转移到了 “线程池的另一个线程”，本质上还是消耗线程资源，无法达到异步 IO 的效率。  
-所以一旦同步之后后面都只能同步下去 除非一直异步下去 所以一般使用async def异步 前提是你是io密集型任务  
+
+如果def方法里面有同步方法 无所谓 反正def方法已经是同步的了 但是你想def 接口中调用 run_in_threadpool 方法去做一个异步是做不到的 因为加不上await 他会阻塞当前子线程（等待 IO 完成），只是将阻塞操作从 “当前线程” 转移到了 “线程池的另一个线程”，本质上还是消耗线程资源，无法达到异步 IO 的效率。  
+所以一旦同步之后后面都只能同步下去 除非一直异步下去 或者你用asyncio.run 重新开启一个事件循环去调用异步方法 所以一般使用async def异步 前提是你是io密集型任务  
+
+使用fastapi 异步接口 接口里面打印出来当前线程是MainThread 同步接口 打印出来的是AnyIO worker thread
