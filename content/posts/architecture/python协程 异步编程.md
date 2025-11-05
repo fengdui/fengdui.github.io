@@ -54,7 +54,7 @@ asyncio.run() 创建事件循环，运行 返回的协程，直到它完成
 await self._serve(sockets) 就是等待完成才会走下去  
 不能在运行的事件循环中调用 asyncio.run()  
 
-run_in_executor 使用线程池调用一个同步方法  
+run_in_executor 使用线程池调用一个同步方法  和直接开启线程池在等待结果相比 等待的方式前者是可以做别的 后者是同步等待
 
 run_in_threadpool 本质上是对  
 asyncio.get_running_loop().run_in_executor() 的封装。  
