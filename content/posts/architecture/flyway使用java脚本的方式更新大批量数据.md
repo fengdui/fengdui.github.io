@@ -22,6 +22,7 @@ TocOpen: false
     Flyway flyway = configuration.load();
     MigrateResult migrateResult = flyway.migrate();
 
+flyway 不能创建低版本的sql 如果低版本的有问题 之前执行的高版本的会删除 cleandisable关闭
 点击locations方法进入，注释上说，可以指定一个包名，包里面可以放入sql和java代码。
 于是写个java类，继承BaseJavaMigration。
 
