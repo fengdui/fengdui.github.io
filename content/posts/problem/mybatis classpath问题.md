@@ -1,6 +1,6 @@
 ---
 title: "mybatis classpath问题"
-date: "2025-05-16"
+date: "2025-05-15"
 tags: ["问题"]
 ShowToc: false
 TocOpen: false
