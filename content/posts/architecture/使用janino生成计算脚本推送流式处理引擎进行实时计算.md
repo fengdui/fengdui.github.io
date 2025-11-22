@@ -43,9 +43,11 @@ return CalcTaskBuilder.getInstance("CUST_ID")
     })
     .build();
 ```
+通过执行这个java代码 最后得到一个Mergeable 里面包含一个treeMap 每个key是时间戳 每个value是计算结果  
+如果不是第一次计算 会根据objectKey去缓存里面查询之前的计算结果 这个map就不是为空  
 如果是7d 就是7天 每天的数据做一个合并  
 如果写成168h 也是7天 但是是每个小时的数据做一个合并 有168个kv  
-在下次进行计算的时候 会做一个时间窗口滑动 只维护7天的数据 最早的key淘汰 key上有时间戳 使用treemap维护  
+当数据过来进行计算的时候 会做一个时间窗口滑动 只维护7天的数据 最早的key淘汰 key上有时间戳  
 
 使用ClassBodyEvaluator输入拼接的字符串生成java代码  
 使用URLClassLoader指定外部 JAR 包路径 需要依赖一些二方包三方包  
