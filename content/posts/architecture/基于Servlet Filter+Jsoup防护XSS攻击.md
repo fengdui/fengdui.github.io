@@ -177,7 +177,7 @@ private static Safelist xssWhitelist() {
             .addProtocols("embed", "src", "http", "https");
 }
 ```
-脚本注入防护 过滤 <script> 等危险标签  
+脚本注入防护 过滤 script 等危险标签  
 HTML注入防护 只允许白名单内的安全标签和属性  
 协议限制 只允许 http/https 等安全协议  
 全面覆盖 拦截所有HTTP请求的参数、请求体、请求头  
