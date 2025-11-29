@@ -1,6 +1,6 @@
 ---
 title: "使用ddd+spring data jpa搭建新工程"
-date: "2025-11-13"
+date: "2019-11-13"
 tags: ["架构"]
 ShowToc: false
 TocOpen: false
