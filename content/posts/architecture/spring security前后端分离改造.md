@@ -132,3 +132,89 @@ public class JwtAccessDeniedHandler implements AccessDeniedHandler {
     }
 }
 ```
+spring security xml 配置
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="
+          http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/security
+          http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <!-- 1. 配置HTTP安全规则 (核心) -->
+    <!-- 关键属性说明：
+         security="none"：完全不经过Spring Security过滤器链，用于完全公开的资源（如登录接口本身）。
+         create-session="stateless"：不创建HttpSession，实现无状态。
+         disable-url-rewriting="true"：防止在URL中重写Session ID。
+         entry-point-ref：定义认证入口点（处理未认证请求）。
+    -->
+    <security:http pattern="/api/auth/login" security="none"/>
+    <security:http create-session="stateless" entry-point-ref="jwtAuthenticationEntryPoint"
+                    disable-url-rewriting="true">
+
+        <!-- 1.1 自定义过滤器链：在标准的身份验证过滤器前插入JWT过滤器 -->
+        <security:custom-filter ref="jwtAuthenticationFilter" position="PRE_AUTH_FILTER"/>
+
+        <!-- 1.2 配置URL访问规则 -->
+        <security:intercept-url pattern="/api/public/**" access="permitAll" />
+        <security:intercept-url pattern="/api/admin/**" access="hasRole('ADMIN')" />
+        <!-- 其他所有API请求都需要认证 -->
+        <security:intercept-url pattern="/api/**" access="isAuthenticated()" />
+
+        <!-- 1.3 禁用CSRF防护（适用于无状态的API） -->
+        <security:csrf disabled="true"/>
+
+        <!-- 1.4 配置退出登录处理（可选，在无状态下通常由前端丢弃Token实现） -->
+        <security:logout logout-url="/api/auth/logout" logout-success-url="/" delete-cookies="JSESSIONID"/>
+    </security:http>
+
+    <!-- 2. 配置认证管理器 -->
+    <!-- 这里通常引用一个自定义的UserDetailsService实现（从数据库加载用户） -->
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider user-service-ref="customUserDetailsService">
+            <!-- 配置密码编码器 -->
+            <security:password-encoder ref="passwordEncoder"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <!-- 3. 声明方案一所需的自定义Bean (关键难点) -->
+    <!-- 注意：这些Bean的实现类（JwtUtil, JwtAuthenticationFilter等）需要你另外用Java编写 -->
+    <!-- 然后将它们通过@Component或@Bean注解交由Spring管理，或在此处用<bean>标签定义 -->
+    <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+    
+    <!-- JWT工具类 -->
+    <bean id="jwtUtil" class="com.your.security.JwtUtil"/>
+    
+    <!-- 自定义JWT认证过滤器 -->
+    <bean id="jwtAuthenticationFilter" class="com.your.security.JwtAuthenticationFilter">
+        <property name="jwtUtil" ref="jwtUtil"/>
+        <property name="userDetailsService" ref="customUserDetailsService"/>
+    </bean>
+    
+    <!-- 认证入口点（返回401 JSON响应） -->
+    <bean id="jwtAuthenticationEntryPoint" class="com.your.security.JwtAuthenticationEntryPoint"/>
+    
+    <!-- 自定义的UserDetailsService -->
+    <bean id="customUserDetailsService" class="com.your.service.CustomUserDetailsServiceImpl"/>
+</beans>
+
+
+<filter>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+<listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
+<context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/applicationContext-security.xml</param-value>
+</context-param>
+```
