@@ -6,7 +6,7 @@ ShowToc: false
 TocOpen: false
 ---
 
-JSONP利用了<script>标签没有跨域限制的特性
+JSONP利用了script标签没有跨域限制的特性
 为什么要使用JSONP 因为请求的接口路径不是我们自己的后端 是第三方的接口 我们不能直接请求 所以只能通过JSONP来解决跨域问题
 而第三方接口只支持jsonp格式的回调函数 所以我们只能通过jsonp来请求数据
 
