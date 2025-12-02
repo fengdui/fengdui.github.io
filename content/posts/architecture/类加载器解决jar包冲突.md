@@ -27,5 +27,5 @@ Java的类加载遵循双亲委派的设计模式，从App ClassLoader开始自�
 
 蚂蚁金服的业务系统模块化之模块化隔离方案 https://www.sofastack.tech/blog/sofastack-modular-isolation/  
 SOFAArk介绍 https://www.sofastack.tech/projects/sofa-boot/sofa-ark-readme/  
-Java隔离容器之sofa-ark使用说明及源码解析 https://juejin.cn/post/6844903653828984845
+Java隔离容器之sofa-ark使用说明及源码解析 https://juejin.cn/post/6844903653828984845  
 OSGi原理与最佳实践 http://www.osgi.com.cn/article/7289456
