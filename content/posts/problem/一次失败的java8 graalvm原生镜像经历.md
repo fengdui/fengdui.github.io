@@ -1,5 +1,5 @@
 ---
-title: "一次失败的java8 graalvm原生镜像经历"
+title: "一次java8 graalvm原生镜像经历"
 date: "2025-11-26"
 tags: ["问题"]
 ShowToc: false
