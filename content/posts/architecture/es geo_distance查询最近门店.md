@@ -7,9 +7,9 @@ TocOpen: false
 ---
 
 
-前端通过JavaScript调用地图服务获取用户当前位置
-将经纬度坐标传递给后端
-或者前端传地址 houduan 后端根据地址转成经纬度
+前端通过JavaScript调用地图服务获取用户当前位置  
+将经纬度坐标传递给后端  
+或者前端传地址 houduan 后端根据地址转成经纬度  
 索引
 ```
 PUT /store_locations
