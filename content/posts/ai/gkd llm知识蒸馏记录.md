@@ -1,6 +1,6 @@
 ---
 title: "gkd llm知识蒸馏记录"
-date: "2025-01-16"
+date: "2026-01-16"
 tags: ["人工智能"]
 ShowToc: false
 TocOpen: false
