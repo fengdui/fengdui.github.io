@@ -5,6 +5,11 @@ tags: ["人工智能"]
 ShowToc: false
 TocOpen: false
 ---
+K-means：无监督学习，用于聚类（不知道标签，把数据分组）  
+1. 随机选择k个初始中心点
+2. 重复直到收敛：
+   a. 分配：每个点分配到最近的中心
+   b. 更新：重新计算每个簇的中心
 ```
     from numpy import *
 
