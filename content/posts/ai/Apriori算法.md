@@ -5,6 +5,7 @@ tags: ["人工智能"]
 ShowToc: false
 TocOpen: false
 ---
+无监督学习 非线性 用于关联规则挖掘
 ```
     from numpy import *
 
