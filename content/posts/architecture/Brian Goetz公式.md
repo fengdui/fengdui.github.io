@@ -1,6 +1,6 @@
 ---
 title: "Brian Goetz公式"
-date: "2015-09-08"
+date: "2015-11-20"
 tags: ["架构"]
 ShowToc: false
 TocOpen: false
